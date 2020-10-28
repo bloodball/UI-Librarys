@@ -1,0 +1,19 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=536485
+
+local main = library:CreateWindow('Window', 0) -- the 0 can changed into a positive/negative integer to change window size because i was too lazy to make the auto-resizer accurate.
+local toggle = main:Toggle('Toggle', function(state)
+print(state)
+end)
+local button = main:Button('Button', function()
+game.Players.LocalPlayer.Character:BreakJoints()
+end)
+local slider = main:Slider('Slider', {max=100}, function(a)
+print(a)
+end)
+local textbox = main:TextBox('TextBox', 'Default, function(b)
+warn(b)
+end)
+local section = main:Section('Section')
+local bind = main:Bind('Bind', Enum.KeyCode.V, function(v)
+error(v)
+end)
