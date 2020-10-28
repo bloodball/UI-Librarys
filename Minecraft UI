@@ -1,0 +1,55 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=1236949
+
+local Lib = loadstring(game:HttpGet("http://www.narwhalhacks.xyz/UI/MinecraftUILib.lua", true))()
+
+local Window = Lib:Window("HI")
+local Window2 = Lib:Window("HI2")
+local Window3 = Lib:Window("HI3", Color3.fromRGB(255, 0, 0))
+
+Window:Button("HI", function()
+   print("HI")
+end)
+
+Window:Toggle("BYE", function(state)
+   print(state)
+end)
+
+Window:Slider("SUP", 1, 250, 37, function(value)
+   print(value)
+end)
+
+Window:Button("HI", function()
+   print("HI")
+end)
+
+Window:Toggle("BYE", function(state)
+   print(state)
+end)
+
+Window:Slider("SUP", 1, 250, 37, function(value)
+   print(value)
+end)
+
+Window2:Button("HI", function()
+   print("HI")
+end)
+
+Window2:Toggle("BYE", function(state)
+   print(state)
+end)
+
+Window2:Slider("SUP", 1, 250, 37, function(value)
+   print(value)
+end)
+
+Window3:Button("HI", function()
+   print("HI")
+end)
+
+Window2:Toggle("BYE", function(state)
+   print(state)
+end)
+
+Window3:Slider("SUP", 1, 250, 37, function(value)
+   print(value)
+end)
