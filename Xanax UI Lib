@@ -1,3 +1,5 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=516055
+
 local XanaxUILib = loadstring(game:HttpGet("https://pastebin.com/raw/XZz3Ytbu"))()
 local Ui = XanaxUILib:CreateWindow("Example UI")
 local Info = Ui:CreateSection("Info")
