@@ -1,0 +1,12 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=912407
+
+local ui = loadstring(game:HttpGet('https://gist.githubusercontent.com/SadBinz/cc09dfc864d10e5db36a655b53038820/raw'))()
+
+local window = ui:AddWindow('test')
+window:KeyBind('Kick Self', 'K', function()
+game:GetService('Players').LocalPlayer:Kick('you kicked yourself lol')
+end)
+
+window:Button('TextBtn', function()
+print'beep'
+end)
