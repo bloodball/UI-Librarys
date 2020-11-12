@@ -1,0 +1,7 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vzltex/Senpai-Lib/master/UILibrary"))();
+
+local Window1 = library:CreateWindow("uwu");
+
+Window1:Button("uwu",function()
+print("uwu")
+end)
