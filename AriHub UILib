@@ -1,4 +1,5 @@
 --Made by : https://v3rmillion.net/member.php?action=profile&uid=536485
+local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/bloodball/secret/main/Ari?token=ARLRDLJUDKAMGJU62RNLNR27VWAGQ', true))()
 
 local main = library:CreateWindow('Window', 0) -- the 0 can changed into a positive/negative integer to change window size because i was too lazy to make the auto-resizer accurate.
 local toggle = main:Toggle('Toggle', function(state)
