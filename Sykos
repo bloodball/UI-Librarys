@@ -1,0 +1,476 @@
+--Made by : Syko (No other info known about this individual)
+
+if getgenv().DevonteLibLoaded ~= nil then
+	print("Already Loaded")
+	return
+end
+
+getgenv().DevonteLibLoaded = true
+
+local Library = { Tabs = {}, TabCount = 0 }
+local CreditList = { "UI Library - Syko" }
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local Heartbeat = game:GetService("RunService").Heartbeat
+
+function Create(obj, props, round)
+	local Obj = Instance.new(obj)
+	for i, v in pairs(props) do
+		if i ~= "Parent" then
+			if typeof(v) == "Instance" then
+				v.Parent = Obj
+			else
+				Obj[i] = v
+			end
+		end			
+	end
+	Obj.Parent = props.Parent
+	if round then
+		local Corner = Instance.new("UICorner", Obj)
+		Corner.CornerRadius = UDim.new(0, round)
+	end
+	return Obj
+end
+
+function Dragger(obj, drag)
+	local Connection
+	drag.InputBegan:Connect(function(Input)
+		if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if Connection then
+				Connection:Disconnect()
+			end
+			local Start = Vector2.new(Mouse.X - obj.AbsolutePosition.X, Mouse.Y - obj.AbsolutePosition.Y)
+			Connection = Heartbeat:Connect(function()
+				obj:TweenPosition(UDim2.new(0, Mouse.X - Start.X, 0, Mouse.Y - Start.Y), "InOut", "Linear", 0.1, true)
+			end)
+		end
+	end)
+	drag.InputEnded:Connect(function(Input)
+		if Input.UserInputType == Enum.UserInputType.MouseButton1 and Connection then
+			Connection:Disconnect()
+		end
+	end)
+end
+
+function Resize(frame)
+	local Size, Padding = 0, frame.UIListLayout.Padding.Offset
+	for i, v in next, frame:GetChildren() do
+		if not v:IsA("UIListLayout") then
+			Size = Size + v.Size.Y.Offset + Padding
+		end
+	end
+	frame.CanvasSize = UDim2.new(0, 0, 0, Size - Padding)
+end
+
+function Library:CreateGui(name)
+	Library.Gui = Create("ScreenGui", {
+		Name = "DevonteLib",
+		Parent = game:GetService("CoreGui"),
+		Create("Frame", {
+			BackgroundColor3 = Color3.fromRGB(24, 24, 24),
+			ClipsDescendants = true,
+			Name = "Main",
+			Position = UDim2.new(0.5, -225, 0.5, -200),
+			Size = UDim2.new(0, 450, 0, 400),
+			Create("Frame", {
+				BackgroundColor3 = Color3.fromRGB(21, 21, 21),
+				Name = "Top",
+				Size = UDim2.new(0, 450, 0, 40),
+				Create("Frame", {
+					BackgroundColor3 = Color3.fromRGB(21, 21, 21),
+					BorderSizePixel = 0,
+					Name = "HideCorners",
+					Position = UDim2.new(0, 0, 0, 20),
+					Size = UDim2.new(0, 450, 0, 20)
+				}),
+				Create("TextLabel", {
+					BackgroundTransparency = 1,
+					Font = Enum.Font.SourceSansSemibold,
+					Name = "Title",
+					Position = UDim2.new(0, 10, 0, 0),
+					Size = UDim2.new(0, 380, 0, 40),
+					Text = name,
+					TextColor3 = Color3.fromRGB(220, 220, 220),
+					TextSize = 22,
+					TextStrokeTransparency = 0.4,
+					TextXAlignment = Enum.TextXAlignment.Left
+				}),
+				Create("TextButton", {
+					AutoButtonColor = false,
+					BackgroundTransparency = 1,
+					Font = Enum.Font.SourceSansBold,
+					Name = "Hide",
+					Position = UDim2.new(0, 390, 0, 0),
+					Size = UDim2.new(0, 25, 0, 40),
+					Text = "-",
+					TextColor3 = Color3.fromRGB(220, 220, 220),
+					TextSize = 22,
+					TextStrokeTransparency = 0.4
+				}),
+				Create("TextButton", {
+					AutoButtonColor = false,
+					BackgroundTransparency = 1,
+					Font = Enum.Font.SourceSansBold,
+					Name = "Exit",
+					Position = UDim2.new(0, 415, 0, 0),
+					Size = UDim2.new(0, 25, 0, 40),
+					Text = "X",
+					TextColor3 = Color3.fromRGB(220, 220, 220),
+					TextSize = 22,
+					TextStrokeTransparency = 0.4
+				})
+			}, 12),
+			Create("Frame", {
+				BackgroundColor3 = Color3.fromRGB(32, 32, 32),
+				Name = "Buttons",
+				Position = UDim2.new(0, 10, 0, 50),
+				Size = UDim2.new(0, 160, 0, 320),
+				Create("ScrollingFrame", {
+					BackgroundTransparency = 1,
+					BorderSizePixel = 0,
+					CanvasSize = UDim2.new(0, 0, 0, 0),
+					ClipsDescendants = true,
+					Name = "Container",
+					Position = UDim2.new(0, 5, 0, 5),
+					ScrollBarImageColor3 = Color3.fromRGB(5, 5, 5),
+					ScrollBarThickness = 5,
+					Size = UDim2.new(0, 150, 0, 310),
+					Create("UIListLayout", {
+						Padding = UDim.new(0, 5),
+						SortOrder = Enum.SortOrder.LayoutOrder
+					})
+				})
+			}, 12),
+			Create("Frame", {
+				BackgroundColor3 = Color3.fromRGB(32, 32, 32),
+				Name = "Pages",
+				Position = UDim2.new(0, 180, 0, 50),
+				Size = UDim2.new(0, 260, 0, 320)
+			}, 12),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Credits",
+				Position = UDim2.new(0, 0, 0, 370),
+				Size = UDim2.new(0, 450, 0, 30),
+				Text = CreditList[1],
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4
+			})
+		}, 12)
+	})
+	
+	local IsOpen = true
+	Dragger(Library.Gui.Main, Library.Gui.Main.Top)
+	
+	Library.Gui.Main.Top.Hide.MouseButton1Click:Connect(function()
+		IsOpen = not IsOpen
+		Library.Gui.Main:TweenSize(UDim2.new(0, 450, 0, IsOpen and 400 or 40), "InOut", "Sine", 0.4, true)
+	end)
+	
+	Library.Gui.Main.Top.Exit.MouseButton1Click:Connect(function()
+		Library.Gui:Destroy()
+		getgenv().DevonteLibLoaded = nil
+	end)
+	
+	coroutine.wrap(function()
+		while wait(3) do
+			if Library.Gui:FindFirstChild("Main") then
+				local Index = table.find(CreditList, Library.Gui.Main.Credits.Text)
+				Library.Gui.Main.Credits.Text = Index == #CreditList and CreditList[1] or CreditList[Index + 1]
+			end
+		end
+	end)()
+end
+
+function Library:AddCredit(text)
+	CreditList[#CreditList + 1] = text
+end
+
+function Library:CreateTab(name)
+	local Tab = { Frame = Create("ScrollingFrame", {
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0,
+		CanvasSize = UDim2.new(0, 0, 0, 0),
+		ClipsDescendants = true,
+		Name = name,
+		Parent = Library.Gui.Main.Pages,
+		Position = UDim2.new(0, 5, 0, 5),
+		ScrollBarImageColor3 = Color3.fromRGB(5, 5, 5),
+		ScrollBarThickness = 5,
+		Size = UDim2.new(0, 250, 0, 310),
+		Visible = Library.TabCount == 0,
+		Create("UIListLayout", {
+			Padding = UDim.new(0, 5),
+			SortOrder = Enum.SortOrder.LayoutOrder
+		})
+	}), Button = Create("Frame", {
+		BackgroundTransparency = 1,
+		Name = name,
+		Parent = Library.Gui.Main.Buttons.Container,
+		Size = UDim2.new(0, 150, 0, 30),
+		Create("Frame", {
+			BackgroundColor3 = Library.TabCount == 0 and Color3.fromRGB(0, 100, 255) or Color3.fromRGB(24, 24, 24),
+			Name = "Indicator",
+			Size = UDim2.new(0, 30, 0, 30)
+		}, 8),
+		Create("TextLabel", {
+			BackgroundTransparency = 1,
+			Font = Enum.Font.SourceSansSemibold,
+			Name = name,
+			Position = UDim2.new(0, 35, 0, 0),
+			Size = UDim2.new(0, 115, 0, 30),
+			Text = name,
+			TextColor3 = Color3.fromRGB(220, 220, 220),
+			TextSize = 18,
+			TextStrokeTransparency = 0.4,
+			TextXAlignment = Enum.TextXAlignment.Left
+		})
+	})}
+	
+	Resize(Library.Gui.Main.Buttons.Container)
+	Library.TabCount = Library.TabCount + 1
+	Library.Tabs[Tab.Button] = Tab.Frame
+	
+	Tab.Button.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			for i, v in next, Library.Tabs do
+				i.Indicator.BackgroundColor3 = v == Tab.Frame and Color3.fromRGB(0, 100, 255) or Color3.fromRGB(24, 24, 24)
+				v.Visible = v == Tab.Frame
+			end
+		end
+	end)
+	
+	function Tab:Header(name)
+		local Header = {}
+		Header.Frame = Create("Frame", {
+			BackgroundTransparency = 1,
+			Name = name,
+			Parent = Tab.Frame,
+			Size = UDim2.new(0, 240, 0, 23),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Label",
+				Size = UDim2.new(0, 240, 0, 23),
+				Text = name,
+				TextColor3 = Color3.fromRGB(190, 190, 190),
+				TextSize = 16,
+				TextStrokeTransparency = 0.4
+			}),
+			Create("TextLabel", {
+				BackgroundColor3 = Color3.fromRGB(120, 120, 120),
+				BorderSizePixel = 0,
+				Name = "Left",
+				Position = UDim2.new(0, 0, 0, 11),
+				Size = UDim2.new(0, 70, 0, 1),
+				Text = ""
+			}),
+			Create("TextLabel", {
+				BackgroundColor3 = Color3.fromRGB(120, 120, 120),
+				BorderSizePixel = 0,
+				Name = "Right",
+				Position = UDim2.new(0, 170, 0, 11),
+				Size = UDim2.new(0, 70, 0, 1),
+				Text = ""
+			})
+		})
+		function Header:Update(text)
+			Header.Frame.Label.Text = text
+		end
+		Resize(Tab.Frame)
+		return Header
+	end
+	
+	function Tab:Button(name, func)
+		local Button = { Callback = func or function() end }
+		Button.Frame = Create("Frame", {
+			BackgroundColor3 = Color3.fromRGB(24, 24, 24),
+			Name = name,
+			Parent = Tab.Frame,
+			Size = UDim2.new(0, 240, 0, 30),
+			Create("TextButton", {
+				AutoButtonColor = false,
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Button",
+				Size = UDim2.new(0, 240, 0, 30),
+				Text = name,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4
+			})
+		}, 8)
+		Button.Frame.Button.MouseButton1Click:Connect(Button.Callback)
+		function Button:Fire()
+			Button.Callback()
+		end
+		Resize(Tab.Frame)
+		return Button
+	end
+	
+	function Tab:Toggle(name, func)
+		local Toggle = { Toggled = false, Callback = func or function() end }
+		Toggle.Frame = Create("Frame", {
+			BackgroundTransparency = 1,
+			Name = name,
+			Parent = Tab.Frame,
+			Size = UDim2.new(0, 240, 0, 30),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Label",
+				Size = UDim2.new(0, 205, 0, 30),
+				Text = name,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4,
+				TextXAlignment = Enum.TextXAlignment.Left
+			}),
+			Create("TextButton", {
+				AutoButtonColor = false,
+				BackgroundColor3 = Color3.fromRGB(21, 21, 21),
+				Name = "Button",
+				Position = UDim2.new(0, 210, 0, 0),
+				Size = UDim2.new(0, 30, 0, 30),
+				Text = ""
+			}, 8)
+		})
+		function Toggle:Set(bool)
+			Toggle.Toggled = not Toggle.Toggled
+			Toggle.Frame.Button.BackgroundColor3 = bool and Color3.fromRGB(0, 100, 255) or Color3.fromRGB(21, 21, 21)
+			Toggle.Callback(bool)
+		end
+		Toggle.Frame.Button.MouseButton1Click:Connect(function()
+			Toggle:Set(not Toggle.Toggled)
+		end)
+		Resize(Tab.Frame)
+		return Toggle
+	end
+	
+	function Tab:Box(name, numonly, func)
+		local Box = { Content = "", Callback = func or function() end }
+		Box.Frame = Create("Frame", {
+			BackgroundTransparency = 1,
+			Name = name,
+			Parent = Tab.Frame,
+			Size = UDim2.new(0, 240, 0, 30),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Label",
+				Size = UDim2.new(0, 125, 0, 30),
+				Text = name,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4,
+				TextXAlignment = Enum.TextXAlignment.Left
+			}),
+			Create("TextBox", {
+				BackgroundColor3 = Color3.fromRGB(21, 21, 21),
+				Font = Enum.Font.SourceSans,
+				Name = "Box",
+				PlaceholderText = numonly and "-- number --" or "-- string --",
+				Position = UDim2.new(0, 130, 0, 0),
+				Size = UDim2.new(0, 110, 0, 30),
+				Text = "",
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 16,
+				TextStrokeTransparency = 0.4
+			}, 8)
+		})
+		function Box:Set(str)
+			if tonumber(str) or not numonly then
+				Box.Content = numonly and tonumber(str) or str
+				Box.Frame.Box.Text = tostring(Box.Content)
+				Box.Callback(Box.Content)
+			else
+				Box.Frame.Box.Text = Box.Content
+			end
+		end
+		Box.Frame.Box.FocusLost:Connect(function()
+			Box:Set(Box.Frame.Box.Text)
+		end)
+		Resize(Tab.Frame)
+		return Box
+	end
+	
+	function Tab:Slider(name, min, max, func)
+		local Slider = { Callback = func or function() end }
+		Slider.Frame = Create("Frame", {
+			BackgroundTransparency = 1,
+			Name = name,
+			Parent = Tab.Frame,
+			Size = UDim2.new(0, 240, 0, 45),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Label",
+				Size = UDim2.new(0, 120, 0, 25),
+				Text = name,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4,
+				TextXAlignment = Enum.TextXAlignment.Left
+			}),
+			Create("TextLabel", {
+				BackgroundTransparency = 1,
+				Font = Enum.Font.SourceSansSemibold,
+				Name = "Value",
+				Position = UDim2.new(0, 120, 0, 0),
+				Size = UDim2.new(0, 120, 0, 25),
+				Text = min,
+				TextColor3 = Color3.fromRGB(220, 220, 220),
+				TextSize = 18,
+				TextStrokeTransparency = 0.4,
+				TextXAlignment = Enum.TextXAlignment.Right
+			}),
+			Create("Frame", {
+				BackgroundColor3 = Color3.fromRGB(21, 21, 21),
+				Name = "Bar",
+				Position = UDim2.new(0, 0, 0, 30),
+				Size = UDim2.new(0, 240, 0, 15),
+				Create("Frame", {
+					BackgroundColor3 = Color3.fromRGB(0, 100, 255),
+					BorderSizePixel = 0,
+					Name = "Progress",
+					Position = UDim2.new(0, 2, 0, 2),
+					Size = UDim2.new(0, 0, 0, 11)
+				}, 8)
+			}, 8)
+		})
+		Slider.Bar = Slider.Frame.Bar.Progress
+		
+		function Slider:Set(val)
+			assert(val >= min and val <= max)
+			local Percent = (val - min) / (max - min)
+			Slider.Value = val
+			Slider.Frame.Value.Text = val
+			Slider.Bar.Size = UDim2.new(Percent, -(4 * Percent), 1, -4)
+			Slider.Callback(val)
+		end
+		
+		Slider.Frame.Bar.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+				if Slider.DragLoop then
+					Slider.DragLoop:Disconnect()
+				end
+				Slider.DragLoop = Heartbeat:Connect(function()
+					local Percent = math.clamp((Mouse.X - Slider.Frame.Bar.AbsolutePosition.X) / Slider.Frame.Bar.AbsoluteSize.X, 0, 1)
+					Slider:Set(math.floor(min + (Percent * (max - min)) * 10) / 10)
+				end)
+			end
+		end)
+		Slider.Frame.Bar.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 and Slider.DragLoop then
+				Slider.DragLoop:Disconnect()
+			end
+		end)
+		Resize(Tab.Frame)
+		return Slider
+	end
+	
+	return Tab
+end
+
+return Library
