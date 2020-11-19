@@ -1,0 +1,211 @@
+--made by : icuck
+
+-- // CONSTANTS \\ --
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local VerifyX = {}
+
+function VerifyX.new(Status, Percentage)
+	local Window = {}
+	
+	-- [[ Screen Gui ]] --
+	-- [ Instance ] --
+	Window.ScreenGui = Instance.new("ScreenGui")
+
+	-- [ Properties ] --
+	Window.ScreenGui.Name = "Verification"
+	Window.ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+	if RunService:IsStudio() then
+		Window.ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	else
+		Window.ScreenGui.Parent = game:GetService("CoreGui")
+	end
+
+
+	-- [[ Main Frame ]] --
+	-- [ Instances ] --
+	Window.VerificationFrame = Instance.new("Frame")
+
+	-- [ Properties ] --
+	Window.VerificationFrame.Name = "VerificationFrame"
+	Window.VerificationFrame.Parent = Window.ScreenGui
+	Window.VerificationFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+	Window.VerificationFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Window.VerificationFrame.Size = UDim2.new(0.4, 0, 0.4, 0)
+
+	-- [[ Title ]] --
+	-- [ Instance ] --
+	Window.Title = Instance.new("TextLabel")
+
+	-- [ Properties ] --
+	Window.Title.Name = "Title"
+	Window.Title.Parent = Window.VerificationFrame
+	Window.Title.AnchorPoint = Vector2.new(0.5, 0.5)
+	Window.Title.BackgroundTransparency = 1
+	Window.Title.Position = UDim2.new(0.5, 0, 0.125, 0)
+	Window.Title.Size = UDim2.new(0.75, 0, 0.15, 0)
+	Window.Title.Font = Enum.Font.SciFi
+	Window.Title.Text = "Verification"
+	Window.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Window.Title.TextScaled = true
+
+	-- [[ Status Image ]] --
+	-- [ Instances ] --
+	Window.StatusImage = Instance.new("ImageLabel")
+
+	Window.Spinner = Instance.new("ImageLabel")
+
+	-- [ Properties ] --
+	Window.StatusImage.Name = "StatusImage"
+	Window.StatusImage.Parent = Window.VerificationFrame
+	Window.StatusImage.AnchorPoint = Vector2.new(0.5, 0.5)
+	Window.StatusImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Window.StatusImage.BackgroundTransparency = 1.000
+	Window.StatusImage.Position = UDim2.new(0.5, 0, 0.474999994, 0)
+	Window.StatusImage.Size = UDim2.new(0.6, 0, 0.6, 0)
+	Window.StatusImage.Image = "rbxassetid://3944703587"
+	Window.StatusImage.ScaleType = Enum.ScaleType.Fit
+
+	Window.Spinner.Parent = Window.StatusImage
+	Window.Spinner.AnchorPoint = Vector2.new(0.5, 0.5)
+	Window.Spinner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Window.Spinner.BackgroundTransparency = 1.000
+	Window.Spinner.Position = UDim2.new(0.875, 0, 0.875, 0)
+	Window.Spinner.Size = UDim2.new(0.25, 0, 0.25, 0)
+	Window.Spinner.Image = "rbxassetid://4335476290"
+	Window.Spinner.ScaleType = Enum.ScaleType.Fit
+
+	-- [[ Status Text ]] --
+	-- [ Instances ] --
+	Window.StatusText = Instance.new("TextLabel")
+
+	-- [ Properties ] --
+	Window.StatusText.Name = "StatusText"
+	Window.StatusText.Parent = Window.VerificationFrame
+	Window.StatusText.AnchorPoint = Vector2.new(0.5, 0)
+	Window.StatusText.BackgroundTransparency = 1
+	Window.StatusText.Position = UDim2.new(0.5, 0, 0.775, 0)
+	Window.StatusText.Size = UDim2.new(0.55, 0, 0.0775, 0)
+	Window.StatusText.Font = Enum.Font.SciFi
+	Window.StatusText.Text = Status
+	Window.StatusText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Window.StatusText.TextScaled = true
+	Window.StatusText.TextSize = 14
+	Window.StatusText.TextWrapped = true
+
+	-- [[ Progress Bar ]] --
+	-- [ Instances ] --
+	Window.Bar = Instance.new("Frame")
+	Window.Fill = Instance.new("Frame")
+
+	-- [ Properties ] --
+	Window.Bar.Name = "Bar"
+	Window.Bar.Parent = Window.VerificationFrame
+	Window.Bar.AnchorPoint = Vector2.new(0.5, 0)
+	Window.Bar.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+	Window.Bar.Position = UDim2.new(0.5, 0, 0.875, 0)
+	Window.Bar.Size = UDim2.new(0.75, 0, 0.025, 0)
+
+	Window.Fill.Name = "Fill"
+	Window.Fill.Parent = Window.Bar
+	Window.Fill.AnchorPoint = Vector2.new(0, 0.5)
+	Window.Fill.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+	Window.Fill.Position = UDim2.new(0, 0, 0.5, 0)
+	Window.Fill.Size = UDim2.new(Percentage, 0, 1, 0)
+
+
+	-- [[ Effects ]] --
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	UIAspectRatioConstraint.Parent = Window.VerificationFrame
+	UIAspectRatioConstraint.AspectRatio = 0.855
+
+	local UICorner = Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(0.1, 0)
+	UICorner.Parent = Window.VerificationFrame
+
+	local UIGradient = Instance.new("UIGradient")
+	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(10, 10, 10)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(50, 50, 50))}
+	UIGradient.Rotation = 90
+	UIGradient.Parent = Window.VerificationFrame
+
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	UIAspectRatioConstraint.Parent = Window.StatusImage
+
+	local UICorner = Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(1, 0)
+	UICorner.Parent = Window.Bar
+
+	local UICorner = Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(1, 0)
+	UICorner.Parent = Window.Fill
+
+	-- // FUNCTIONS \\ --
+	Window.FinishedLoading = false
+	
+	function Window:Spin(Yield)
+		local Tween = TweenService:Create(Window.Spinner, TweenInfo.new(1.5, Enum.EasingStyle.Back), {Rotation = Window.Spinner.Rotation + 360})
+		Tween:Play()
+		if Yield then
+			Tween.Completed:Wait()
+			Window.Spinner.Rotation = 0
+		else
+			coroutine.wrap(function()
+				Tween.Completed:Wait()
+				Window.Spinner.Rotation = 0
+				print('rotate')
+			end)
+		end
+		return Tween
+	end
+
+	function Window:Update(Status, Percentage, Data)
+		local Speed = 1
+		if Data and Data.Speed then
+			Speed = Data.Speed
+		end
+		
+		Window.StatusText.Text = Status
+		TweenService:Create(Window.StatusImage, TweenInfo.new(0.25, Enum.EasingStyle.Sine), {Size = UDim2.new(0.65, 0, 0.65, 0)}):Play()
+		local ProgressTween = TweenService:Create(Window.Fill, TweenInfo.new(Speed, Enum.EasingStyle.Back), {Size = UDim2.new(Percentage, 0, 1, 0)})
+		ProgressTween:Play()
+		ProgressTween.Completed:Wait()
+		TweenService:Create(Window.StatusImage, TweenInfo.new(0.25, Enum.EasingStyle.Sine), {Size = UDim2.new(0.6, 0, 0.6, 0)}):Play()
+	end
+	
+	function Window:Complete()
+		Window.FinishedLoading = true
+		
+		TweenService:Create(Window.Title, TweenInfo.new(0.25), {TextColor3 = Color3.new(0, 1, 0)}):Play()
+		
+		Window.StatusImage.Image = "rbxassetid://4335489513"
+		TweenService:Create(Window.StatusImage, TweenInfo.new(0.25), {ImageColor3 = Color3.new(0, 1, 0)}):Play()
+
+		TweenService:Create(Window.StatusText, TweenInfo.new(0.25), {TextColor3 = Color3.new(0, 1, 0)}):Play()
+		
+		Window.Spinner.Rotation = 0
+		Window:Spin(false)
+		TweenService:Create(Window.Spinner, TweenInfo.new(0.25), {ImageColor3 = Color3.new(0, 1, 0)}):Play()
+		Window.Spinner.Image = "rbxassetid://4384403532"
+		
+		Window:Update("Verified", 1)
+		
+		wait(2.5)
+		
+		local Collapse = TweenService:Create(Window.VerificationFrame, TweenInfo.new(0.75, Enum.EasingStyle.Sine), {Position = UDim2.new(0.5, 0, 1, 0), AnchorPoint = Vector2.new(0.5, 0)})
+		Collapse:Play()
+		Collapse.Completed:Wait()
+		Window.ScreenGui:Destroy()
+	end
+	
+	coroutine.wrap(function()
+		repeat
+			Window:Spin(true)
+			wait(0.25)
+		until Window.FinishedLoading == true
+	end)()
+
+	return Window
+end
+
+return VerifyX
