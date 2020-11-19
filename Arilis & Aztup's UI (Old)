@@ -1,6 +1,6 @@
 --Made by : https://v3rmillion.net/member.php?action=profile&uid=536485 (I don't know Aztups v3rmillion.)
 
-local library = loadstring(game:HttpGet('https://arilis.dev/uploader/uilib.lua', true))()
+local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Create%20Arilis%20%26%20Aztup's%20UI%20(Old)', true))()
 local main = library:CreateWindow('Main')
 local resetChar = main:Button('Reset Character', function()
     game:GetService('Players').LocalPlayer.Character:BreakJoints()
