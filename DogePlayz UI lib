@@ -1,0 +1,173 @@
+--One of doge's first UI Libs. Don't judge it. Go show him support by using his scripts 
+--https://github.com/DogePlayz-Dev/DogeScripts
+
+local module = {}
+
+-- Instances:
+
+local DogeHubGUI = Instance.new("ScreenGui")
+local Main = Instance.new("ImageLabel")
+local Main2 = Instance.new("ScrollingFrame")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local TextName = Instance.new("TextLabel")
+local UIListLayout = Instance.new("UIListLayout")
+
+--Properties:
+
+DogeHubGUI.Name = "DogeHubGUI"
+DogeHubGUI.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = DogeHubGUI
+Main.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+Main.BackgroundTransparency = 1.000
+Main.Position = UDim2.new(0.191394657, 0, 0.0835380852, 0)
+Main.Size = UDim2.new(0, 178, 0, 335)
+Main.Image = "rbxassetid://3570695787"
+Main.ImageColor3 = Color3.fromRGB(44, 44, 44)
+Main.ScaleType = Enum.ScaleType.Slice
+Main.SliceCenter = Rect.new(100, 100, 100, 100)
+Main.SliceScale = 0.250
+
+Main2.Name = "Main2"
+Main2.Parent = Main
+Main2.Active = true
+Main2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Main2.BackgroundTransparency = 1.000
+Main2.BorderSizePixel = 0
+Main2.Size = UDim2.new(1, 0, 1, 0)
+Main2.CanvasSize = UDim2.new(0, 0, 1.5, 0)
+Main2.ScrollBarThickness = 0
+
+
+
+
+
+
+
+UIListLayout.Parent = Main2
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0.0500000007, 0)
+
+
+--Adding Functions
+
+function module:NewBox(Name, func)
+
+    local BoxName = Instance.new("TextBox")
+    UICorner.Parent = BoxName
+
+    BoxName.Name = Name
+    BoxName.Parent = Main2
+    BoxName.BackgroundColor3 = Color3.fromRGB(0, 102, 255)
+    BoxName.Position = UDim2.new(0.139393941, 0, 0.17458123, 0)
+    BoxName.Size = UDim2.new(0, 130, 0, 45)
+    BoxName.Font = Enum.Font.SourceSansBold
+    BoxName.PlaceholderColor3 = Color3.fromRGB(203, 203, 203)
+    BoxName.PlaceholderText = Name
+    BoxName.Text = ""
+    BoxName.TextColor3 = Color3.fromRGB(255, 255, 255)
+    BoxName.TextScaled = true
+    BoxName.TextSize = 14.000
+    BoxName.TextWrapped = true
+
+    BoxName.Text.Changed:Connect(func)
+
+end
+
+function module:NewButton(Name, func)
+    local ButtonName = Instance.new("TextButton")
+    UICorner_2.Parent = ButtonName
+    
+    ButtonName.Name = Name
+    ButtonName.Parent = Main2
+    ButtonName.BackgroundColor3 = Color3.fromRGB(0, 102, 255)
+    ButtonName.Position = UDim2.new(0.139393941, 0, 0.17458123, 0)
+    ButtonName.Size = UDim2.new(0, 130, 0, 45)
+    ButtonName.Font = Enum.Font.SourceSansBold
+    ButtonName.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ButtonName.TextScaled = true
+    ButtonName.TextSize = 14.000
+    ButtonName.TextWrapped = true
+    ButtonName.Text = Name
+
+    ButtonName.MouseButton1Click:Connect(func)
+
+
+end
+
+function module:NewText(Text)
+    TextName.Name = Text
+    TextName.Parent = Main2
+    TextName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextName.BackgroundTransparency = 1.000
+    TextName.Position = UDim2.new(-0.201923072, 0, -0.0577114411, 0)
+    TextName.Size = UDim2.new(0, 165, 0, 24)
+    TextName.Font = Enum.Font.SourceSansBold
+    TextName.Text = Text
+    TextName.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextName.TextScaled = true
+    TextName.TextSize = 14.000
+    TextName.TextWrapped = true
+end
+
+-- Scripts:
+
+local function PPJKYVM_fake_script() -- Main.OpenCloseScript 
+	local script = Instance.new('LocalScript', Main)
+
+	local uis = game:GetService("UserInputService")
+	
+	local Frame = script.Parent
+	
+	uis.InputBegan:Connect(function(key, gp)
+		if key.KeyCode == Enum.KeyCode.Delete then
+			Frame.Visible = not Frame.Visible
+		end
+	end)
+end
+coroutine.wrap(PPJKYVM_fake_script)()
+local function NBXDPZ_fake_script() -- Main.Dragify 
+	local script = Instance.new('LocalScript', Main)
+
+	local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+	    dragToggle = nil
+	    local dragSpeed = 0.50
+	    dragInput = nil
+	    dragStart = nil
+	    local dragPos = nil
+	    function updateInput(input)
+	        local Delta = input.Position - dragStart
+	        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+	        game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.30), {Position = Position}):Play()
+	    end
+	    Frame.InputBegan:Connect(function(input)
+	        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+	            dragToggle = true
+	            dragStart = input.Position
+	            startPos = Frame.Position
+	            input.Changed:Connect(function()
+	                if input.UserInputState == Enum.UserInputState.End then
+	                    dragToggle = false
+	                end
+	            end)
+	        end
+	    end)
+	    Frame.InputChanged:Connect(function(input)
+	        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+	            dragInput = input
+	        end
+	    end)
+	    game:GetService("UserInputService").InputChanged:Connect(function(input)
+	        if input == dragInput and dragToggle then
+	            updateInput(input)
+	        end
+	    end)
+	end
+	
+	dragify(script.Parent)
+end
+coroutine.wrap(NBXDPZ_fake_script)()
