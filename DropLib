@@ -3,7 +3,7 @@ local config = {
    ["HeaderWidth"] = 250,
    ["AccentColor"] = Color3.new(0.6,0,0)
 }
-local gui = loadstring(game:HttpGet("https://gitlab.com/0x45.xyz/droplib/-/raw/master/drop-minified.lua"))():Init(config,game.CoreGui)
+local gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/DropLib"))():Init(config,game.CoreGui)
 
 gui:CreateCategory("Clean Up"):CreateButton("Click",function() gui:CleanUp() end)
 local lpg = gui:CreateCategory("Local Player")
