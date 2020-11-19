@@ -1,0 +1,680 @@
+--Made by : LycorisUser
+local library = {}
+--slider x: 287
+
+local lycorisz = Instance.new("ScreenGui")
+lycorisz.Name = "lycorisz"
+lycorisz.Parent = game:GetService("CoreGui")
+lycorisz.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local uis = game:GetService("UserInputService")
+
+function library:Create()
+    local open = true
+    local Fuck = Instance.new("Frame")
+    local Main = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local TabHolder = Instance.new("Frame")
+    local TabContainer = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
+    local Tabs = Instance.new("Folder")
+    local Exit = Instance.new("ImageLabel")
+    local Icon = Instance.new("ImageLabel")
+    local Title = Instance.new("TextLabel")
+    local MainBorder = Instance.new("Frame")
+    local UICorner_23 = Instance.new("UICorner")
+
+    
+    Fuck.Name = "Fuck"
+    Fuck.Parent = lycorisz
+    Fuck.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Fuck.BackgroundTransparency = 1.000
+    Fuck.BorderSizePixel = 0
+    Fuck.Position = UDim2.new(0, 365, 0, 163)
+    Fuck.Size = UDim2.new(0, 452, 0, 278)
+
+    Main.Name = "Main"
+    Main.Parent = Fuck
+    Main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    Main.BorderSizePixel = 0
+    Main.Position = UDim2.new(0, 0, 0, -11)
+    Main.Size = UDim2.new(0, 452, 0, 277)
+
+    UICorner.Parent = Main
+
+    TabHolder.Name = "TabHolder"
+    TabHolder.Parent = Main
+    TabHolder.Active = true
+    TabHolder.BackgroundColor3 = Color3.fromRGB(14, 14, 14)
+    TabHolder.BorderSizePixel = 0
+    TabHolder.ClipsDescendants = true
+    TabHolder.Position = UDim2.new(0, 6, 0, 26)
+    TabHolder.Selectable = true
+    TabHolder.Size = UDim2.new(0, 99, 0, 245)
+    TabHolder.ZIndex = 2
+
+    TabContainer.Name = "TabContainer"
+    TabContainer.Parent = TabHolder
+    TabContainer.Active = true
+    TabContainer.AnchorPoint = Vector2.new(0.5, 0.5)
+    TabContainer.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+    TabContainer.BackgroundTransparency = 1.000
+    TabContainer.BorderSizePixel = 0
+    TabContainer.Position = UDim2.new(0, 49, 0, 123)
+    TabContainer.Size = UDim2.new(0, 90, 0, 237)
+    TabContainer.ZIndex = 4
+    TabContainer.ScrollBarThickness = 0
+
+    UIListLayout.Parent = TabContainer
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 4)
+
+    Exit.Name = "Exit"
+        Exit.Parent = Main
+        Exit.AnchorPoint = Vector2.new(0.5, 0.5)
+        Exit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Exit.BackgroundTransparency = 1.000
+        Exit.Position = UDim2.new(0, 435, 0, 13)
+        Exit.Size = UDim2.new(0, 20, 0, 20)
+        Exit.ZIndex = 4
+        Exit.Image = "rbxassetid://5835830564"
+        Exit.InputBegan:Connect(function(a)
+            if a.UserInputType == Enum.UserInputType.MouseButton1 then
+                lycorisz:Destroy()
+            end
+        end)
+
+        Icon.Name = "Icon"
+        Icon.Parent = Main
+        Icon.AnchorPoint = Vector2.new(0.5, 0.5)
+        Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Icon.BackgroundTransparency = 1.000
+        Icon.Position = UDim2.new(0, 15, 0, 12)
+        Icon.Size = UDim2.new(0, 18, 0, 18)
+        Icon.ZIndex = 4
+        Icon.Image = "http://www.roblox.com/asset/?id=5840182000"
+        Icon.ImageColor3 = Color3.fromRGB(255, 115, 0)
+
+        Title.Name = "Title"
+        Title.Parent = Main
+        Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Title.BackgroundTransparency = 1.000
+        Title.BorderSizePixel = 0
+        Title.Position = UDim2.new(0, 185, 0, 1)
+        Title.Size = UDim2.new(0, 79, 0, 22)
+        Title.ZIndex = 4
+        Title.Font = Enum.Font.Code
+        Title.Text = "Lycoris Hub"
+        Title.TextColor3 = Color3.fromRGB(255, 115, 0)
+        Title.TextSize = 14.000
+
+        MainBorder.Name = "MainBorder"
+        MainBorder.Parent = Fuck
+        MainBorder.AnchorPoint = Vector2.new(0.5, 0.5)
+        MainBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        MainBorder.Position = UDim2.new(0, 226, 0, 127)
+        MainBorder.Size = UDim2.new(0, 454, 0, 279)
+        MainBorder.ZIndex = 0
+
+        UICorner_23.CornerRadius = UDim.new(0, 9)
+        UICorner_23.Parent = MainBorder
+
+        Tabs.Name = "Tabs"
+        Tabs.Parent = Main
+
+        uis.InputBegan:connect(function(a, b)
+            if not b then
+                if a.KeyCode == Enum.KeyCode.RightAlt then
+                    open = not open
+                    if open then
+                        Fuck.Visible = false
+    
+                    else
+                        Fuck.Visible = true
+                    end
+                end
+            end
+        end)
+    local creator = {}
+
+    function creator:Tab(name, tabname)
+        name = name or "Tab"
+        tabname = tabname or "Tab"
+
+        local TabButton = Instance.new("Frame")
+        local TabToggle = Instance.new("TextButton")
+        local UICorner_2 = Instance.new("UICorner")
+        local UICorner_3 = Instance.new("UICorner")
+        local TabBack = Instance.new("Frame")
+        local UICorner_4 = Instance.new("UICorner")
+        local UICorner_5 = Instance.new("UICorner")
+        local TabHolderBorder = Instance.new("Frame")
+        local UICorner_6 = Instance.new("UICorner")
+        local TAB = Instance.new("Frame")
+        local Tab = Instance.new("Frame")
+        local UICorner_7 = Instance.new("UICorner")
+        local Container = Instance.new("ScrollingFrame")
+        local UIListLayout_2 = Instance.new("UIListLayout")
+        local TabBorder = Instance.new("Frame")
+        local UICorner_22 = Instance.new("UICorner")
+
+        TabButton.Name = "TabButton"
+        TabButton.Parent = TabContainer
+        TabButton.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        TabButton.BackgroundTransparency = 1.000
+        TabButton.Size = UDim2.new(0, 83, 0, 24)
+
+        TabToggle.Name = "TabToggle"
+        TabToggle.Parent = TabButton
+        TabToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+        TabToggle.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+        TabToggle.Position = UDim2.new(0, 44, 0, 12)
+        TabToggle.Size = UDim2.new(0, 82, 0, 24)
+        TabToggle.ZIndex = 2
+        TabToggle.Font = Enum.Font.Arial
+        TabToggle.Text = name
+        TabToggle.TextColor3 = Color3.fromRGB(124, 124, 124)
+        TabToggle.TextSize = 12.000
+
+        UICorner_2.Parent = TabToggle
+
+        UICorner_3.CornerRadius = UDim.new(0, 9)
+        UICorner_3.Parent = TabButton
+
+        TabBack.Name = "TabBack"
+        TabBack.Parent = TabButton
+        TabBack.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        TabBack.Position = UDim2.new(0, 3, 0, 0)
+        TabBack.Size = UDim2.new(0, 82, 0, 24)
+        TabBack.Visible = false
+
+        UICorner_4.CornerRadius = UDim.new(0, 9)
+        UICorner_4.Parent = TabBack
+
+        UICorner_5.CornerRadius = UDim.new(0, 5)
+        UICorner_5.Parent = TabHolder
+
+        TabHolderBorder.Name = "TabHolderBorder"
+        TabHolderBorder.Parent = Main
+        TabHolderBorder.BackgroundColor3 = Color3.fromRGB(76, 76, 76)
+        TabHolderBorder.Position = UDim2.new(0, 5, 0, 25)
+        TabHolderBorder.Size = UDim2.new(0, 101, 0, 247)
+
+        UICorner_6.CornerRadius = UDim.new(0, 5)
+        UICorner_6.Parent = TabHolderBorder
+
+        TAB.Name = tabname
+        TAB.Parent = Tabs
+        TAB.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TAB.BackgroundTransparency = 1.000
+        TAB.BorderSizePixel = 0
+        TAB.Position = UDim2.new(0, 115, 0, 26)
+        TAB.Size = UDim2.new(0, 331, 0, 245)
+
+        Tab.Name = "Tab"
+        Tab.Parent = TAB
+        Tab.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        Tab.BorderSizePixel = 0
+        Tab.Size = UDim2.new(0, 331, 0, 245)
+        Tab.ZIndex = 2
+
+        UICorner_7.Parent = Tab
+
+        Container.Name = "Container"
+        Container.Parent = Tab
+        Container.Active = true
+        Container.AnchorPoint = Vector2.new(0.5, 0.5)
+        Container.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+        Container.BackgroundTransparency = 1.000
+        Container.BorderSizePixel = 0
+        Container.Position = UDim2.new(0, 165, 0, 122)
+        Container.Size = UDim2.new(0, 316, 0, 228)
+        Container.ZIndex = 4
+        Container.ScrollBarThickness = 3
+
+        UIListLayout_2.Parent = Container
+        UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+        UIListLayout_2.Padding = UDim.new(0, 7)
+
+        TabBorder.Name = "TabBorder"
+        TabBorder.Parent = TAB
+        TabBorder.BackgroundColor3 = Color3.fromRGB(76, 76, 76)
+        TabBorder.Position = UDim2.new(0, -1, 0, -1)
+        TabBorder.Size = UDim2.new(0, 333, 0, 247)
+
+        UICorner_22.Parent = TabBorder
+
+        TabToggle.MouseButton1Down:Connect(function()
+            for i, v in pairs(TabContainer:GetChildren()) do
+                if v:IsA("Frame") then
+                    v["TabBack"]:TweenPosition(UDim2.new(0, 3, 0, 0), "Out", "Linear", .1, true)
+                    v["TabBack"].Visible = false
+                end
+            end
+            TabBack.Visible = true
+            TabBack:TweenPosition(UDim2.new(0, 0, 0, 0), "Out", "Linear", .1, true, function()
+                for i, v in pairs(Tabs:GetChildren()) do
+                    if v:IsA("Frame") then
+                        v.Visible = false
+                    end
+                end
+                TAB.Visible = true
+            end)
+        end)
+    end
+
+    function creator:Button(name, desc, callback, tab)
+        name = name or "Button"
+        desc = desc or "Click to do something..."
+        callback = callback or function() end
+        tab = Tabs[tab].Tab:WaitForChild("Container") or Tabs:GetChildren()[2].Tab:WaitForChild("Container")
+
+        local Button = Instance.new("Frame")
+        local ButtonBorder = Instance.new("Frame")
+        local UICorner_8 = Instance.new("UICorner")
+        local Entry = Instance.new("Frame")
+        local UICorner_9 = Instance.new("UICorner")
+        local ButtonDescription = Instance.new("TextLabel")
+        local ButtonName = Instance.new("TextLabel")
+
+        Button.Name = "Button"
+        Button.Parent = tab
+        Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Button.BackgroundTransparency = 1.000
+        Button.Size = UDim2.new(0, 303, 0, 40)
+
+        ButtonBorder.Name = "ButtonBorder"
+        ButtonBorder.Parent = Button
+        ButtonBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        ButtonBorder.Size = UDim2.new(0, 303, 0, 40)
+
+        UICorner_8.CornerRadius = UDim.new(0, 4)
+        UICorner_8.Parent = ButtonBorder
+
+        Entry.Name = "Entry"
+        Entry.Parent = ButtonBorder
+        Entry.AnchorPoint = Vector2.new(0.5, 0.5)
+        Entry.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        Entry.Position = UDim2.new(0, 151, 0, 20)
+        Entry.Size = UDim2.new(0, 301, 0, 38)
+
+        UICorner_9.CornerRadius = UDim.new(0, 4)
+        UICorner_9.Parent = Entry
+
+        ButtonDescription.Name = "ButtonDescription"
+        ButtonDescription.Parent = Entry
+        ButtonDescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ButtonDescription.BackgroundTransparency = 1.000
+        ButtonDescription.Position = UDim2.new(0.0199335553, 0, 0.625, 0)
+        ButtonDescription.Size = UDim2.new(0, 290, 0, 11)
+        ButtonDescription.Font = Enum.Font.GothamSemibold
+        ButtonDescription.Text = desc
+        ButtonDescription.TextColor3 = Color3.fromRGB(102, 102, 102)
+        ButtonDescription.TextSize = 11.000
+        ButtonDescription.TextWrapped = true
+        ButtonDescription.TextXAlignment = Enum.TextXAlignment.Left
+
+        ButtonName.Name = "ButtonName"
+        ButtonName.Parent = Entry
+        ButtonName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ButtonName.BackgroundTransparency = 1.000
+        ButtonName.Position = UDim2.new(0.0199335553, 0, 0.125, 0)
+        ButtonName.Size = UDim2.new(0, 289, 0, 15)
+        ButtonName.Font = Enum.Font.GothamSemibold
+        ButtonName.Text = name
+        ButtonName.TextColor3 = Color3.fromRGB(179, 179, 179)
+        ButtonName.TextSize = 13.000
+        ButtonName.TextWrapped = true
+        ButtonName.TextXAlignment = Enum.TextXAlignment.Left
+
+        Entry.InputBegan:Connect(function(a)
+            if a.UserInputType == Enum.UserInputType.MouseButton1 then
+                pcall(callback)
+            end
+        end)
+        Button.MouseEnter:connect(function()
+            ButtonBorder.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        end)
+        Button.MouseLeave:connect(function()
+            ButtonBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        end)
+    end
+
+    function creator:Slider(name, tab, minvalue, maxvalue, callback)
+        name = name or "Slider"
+        minvalue = minvalue or 0
+        maxvalue = maxvalue or 100
+        callback = callback or function() end
+        tab = Tabs[tab].Tab:WaitForChild("Container") or Tabs:GetChildren()[2].Tab:WaitForChild("Container")
+        local Value
+                
+        local Slider = Instance.new("Frame")
+        local SliderBorder = Instance.new("Frame")
+        local UICorner_10 = Instance.new("UICorner")
+        local Entry_2 = Instance.new("Frame")
+        local UICorner_11 = Instance.new("UICorner")
+        local SliderName = Instance.new("TextLabel")
+        local SliderFrameBorder = Instance.new("Frame")
+        local UICorner_12 = Instance.new("UICorner")
+        local SliderFrame = Instance.new("Frame")
+        local UICorner_13 = Instance.new("UICorner")
+        local Slider_2 = Instance.new("Frame")
+        local UICorner_14 = Instance.new("UICorner")
+        local Valuee = Instance.new("TextLabel")
+
+        Slider.Name = "Slider"
+        Slider.Parent = tab
+        Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Slider.BackgroundTransparency = 1.000
+        Slider.Size = UDim2.new(0, 303, 0, 40)
+
+        SliderBorder.Name = "SliderBorder"
+        SliderBorder.Parent = Slider
+        SliderBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        SliderBorder.Size = UDim2.new(0, 303, 0, 40)
+
+        UICorner_10.CornerRadius = UDim.new(0, 4)
+        UICorner_10.Parent = SliderBorder
+
+        Entry_2.Name = "Entry"
+        Entry_2.Parent = SliderBorder
+        Entry_2.AnchorPoint = Vector2.new(0.5, 0.5)
+        Entry_2.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        Entry_2.Position = UDim2.new(0, 151, 0, 20)
+        Entry_2.Size = UDim2.new(0, 301, 0, 38)
+
+        UICorner_11.CornerRadius = UDim.new(0, 4)
+        UICorner_11.Parent = Entry_2
+
+        SliderName.Name = "SliderName"
+        SliderName.Parent = Entry_2
+        SliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        SliderName.BackgroundTransparency = 1.000
+        SliderName.Position = UDim2.new(0.036544852, -4, 0.125, 0)
+        SliderName.Size = UDim2.new(0, 252, 0, 15)
+        SliderName.Font = Enum.Font.GothamSemibold
+        SliderName.Text = name
+        SliderName.TextColor3 = Color3.fromRGB(179, 179, 179)
+        SliderName.TextSize = 13.000
+        SliderName.TextWrapped = true
+        SliderName.TextXAlignment = Enum.TextXAlignment.Left
+
+        SliderFrameBorder.Name = "SliderFrameBorder"
+        SliderFrameBorder.Parent = Entry_2
+        SliderFrameBorder.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+        SliderFrameBorder.ClipsDescendants = true
+        SliderFrameBorder.Position = UDim2.new(0.0199335553, 0, 0.631578922, 0)
+        SliderFrameBorder.Size = UDim2.new(0, 289, 0, 7)
+
+        UICorner_12.CornerRadius = UDim.new(0, 4)
+        UICorner_12.Parent = SliderFrameBorder
+
+        SliderFrame.Name = "SliderFrame"
+        SliderFrame.Parent = SliderFrameBorder
+        SliderFrame.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+        SliderFrame.ClipsDescendants = true
+        SliderFrame.Position = UDim2.new(0, 1, 0, 1)
+        SliderFrame.Size = UDim2.new(0, 287, 0, 5)
+
+        UICorner_13.CornerRadius = UDim.new(0, 4)
+        UICorner_13.Parent = SliderFrame
+
+        Slider_2.Name = "Slider"
+        Slider_2.Parent = SliderFrameBorder
+        Slider_2.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        Slider_2.ClipsDescendants = true
+        Slider_2.Position = UDim2.new(0, 1, 0, 1)
+        Slider_2.Size = UDim2.new(0, 0, 0, 5)
+        Slider_2.BorderSizePixel = 0
+
+        UICorner_14.CornerRadius = UDim.new(0, 4)
+        UICorner_14.Parent = Slider_2
+
+        Valuee.Name = "Value"
+        Valuee.Parent = Entry_2
+        Valuee.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Valuee.BackgroundTransparency = 1.000
+        Valuee.Position = UDim2.new(0.820598006, -4, 0.256578952, 0)
+        Valuee.Size = UDim2.new(0, 49, 0, 14)
+        Valuee.Font = Enum.Font.Gotham
+        Valuee.Text = minvalue
+        Valuee.TextColor3 = Color3.fromRGB(179, 179, 179)
+        Valuee.TextSize = 10.000
+        Valuee.TextWrapped = true
+        Valuee.TextXAlignment = Enum.TextXAlignment.Right
+
+        --skide
+        Entry_2.InputBegan:connect(function(e)
+            if e.UserInputType == Enum.UserInputType.MouseButton1 then
+                Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 288) * Slider_2.AbsoluteSize.X) + tonumber(minvalue)) or 0
+                pcall(function()
+                    callback(Value)
+                end)
+                Slider_2.Size = UDim2.new(0, math.clamp(mouse.X - Slider_2.AbsolutePosition.X, 0, 288), 0, 5)
+                moveconnection = mouse.Move:Connect(function()
+                    Valuee.Text = Value
+                    Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 288) * Slider_2.AbsoluteSize.X) + tonumber(minvalue))
+                    pcall(function()
+                        callback(Value)
+                    end)
+                    Slider_2.Size = UDim2.new(0, math.clamp(mouse.X - Slider_2.AbsolutePosition.X, 0, 288), 0, 5)
+                end)
+                releaseconnection = uis.InputEnded:Connect(function(Mouse)
+                    if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+                        Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 288) * Slider_2.AbsoluteSize.X) + tonumber(minvalue))
+                        pcall(function()
+                            callback(Value)
+                        end)
+                        Slider_2.Size = UDim2.new(0, math.clamp(mouse.X - Slider_2.AbsolutePosition.X, 0, 288), 0, 5)
+                        moveconnection:Disconnect()
+                        releaseconnection:Disconnect()
+                    end
+                end)
+            end
+        end)
+        Slider.MouseEnter:connect(function()
+            SliderBorder.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        end)
+        Slider.MouseLeave:connect(function()
+            SliderBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        end)
+    end
+
+    function creator:Toggle(name, desc, tab, callback)
+        name = name or "Toggle"
+        desc = desc or "fucing togl"
+        callback = callback or function() end
+        tab = Tabs[tab].Tab:WaitForChild("Container") or Tabs:GetChildren()[2].Tab:WaitForChild("Container")
+        local t = false
+        
+        local Toggle = Instance.new("Frame")
+        local ToggleBorder = Instance.new("Frame")
+        local UICorner_15 = Instance.new("UICorner")
+        local Entry_3 = Instance.new("Frame")
+        local UICorner_16 = Instance.new("UICorner")
+        local ToggleDescription = Instance.new("TextLabel")
+        local ToggleName = Instance.new("TextLabel")
+        local TheToggle = Instance.new("Frame")
+        local UICorner_17 = Instance.new("UICorner")
+        local Shit = Instance.new("Frame")
+        local UICorner_18 = Instance.new("UICorner")
+        local Ass = Instance.new("Frame")
+        local UICorner_19 = Instance.new("UICorner")
+
+        Toggle.Name = "Toggle"
+        Toggle.Parent = tab
+        Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Toggle.BackgroundTransparency = 1.000
+        Toggle.Size = UDim2.new(0, 303, 0, 40)
+
+        ToggleBorder.Name = "ToggleBorder"
+        ToggleBorder.Parent = Toggle
+        ToggleBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        ToggleBorder.Size = UDim2.new(0, 303, 0, 40)
+
+        UICorner_15.CornerRadius = UDim.new(0, 4)
+        UICorner_15.Parent = ToggleBorder
+
+        Entry_3.Name = "Entry"
+        Entry_3.Parent = ToggleBorder
+        Entry_3.AnchorPoint = Vector2.new(0.5, 0.5)
+        Entry_3.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        Entry_3.Position = UDim2.new(0, 151, 0, 20)
+        Entry_3.Size = UDim2.new(0, 301, 0, 38)
+
+        UICorner_16.CornerRadius = UDim.new(0, 4)
+        UICorner_16.Parent = Entry_3
+
+        ToggleDescription.Name = "ToggleDescription"
+        ToggleDescription.Parent = Entry_3
+        ToggleDescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ToggleDescription.BackgroundTransparency = 1.000
+        ToggleDescription.Position = UDim2.new(0.0199335553, 0, 0.625, 0)
+        ToggleDescription.Size = UDim2.new(0, 264, 0, 11)
+        ToggleDescription.Font = Enum.Font.GothamSemibold
+        ToggleDescription.Text = desc
+        ToggleDescription.TextColor3 = Color3.fromRGB(102, 102, 102)
+        ToggleDescription.TextSize = 11.000
+        ToggleDescription.TextWrapped = true
+        ToggleDescription.TextXAlignment = Enum.TextXAlignment.Left
+
+        ToggleName.Name = "ToggleName"
+        ToggleName.Parent = Entry_3
+        ToggleName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ToggleName.BackgroundTransparency = 1.000
+        ToggleName.Position = UDim2.new(0.0199335553, 0, 0.125, 0)
+        ToggleName.Size = UDim2.new(0, 266, 0, 15)
+        ToggleName.Font = Enum.Font.GothamSemibold
+        ToggleName.Text = name
+        ToggleName.TextColor3 = Color3.fromRGB(179, 179, 179)
+        ToggleName.TextSize = 13.000
+        ToggleName.TextWrapped = true
+        ToggleName.TextXAlignment = Enum.TextXAlignment.Left
+
+        TheToggle.Name = "TheToggle"
+        TheToggle.Parent = Entry_3
+        TheToggle.AnchorPoint = Vector2.new(0.5, 0.5)
+        TheToggle.BackgroundColor3 = Color3.fromRGB(139, 139, 139)
+        TheToggle.Position = UDim2.new(0, 283, 0, 19)
+        TheToggle.Size = UDim2.new(0, 19, 0, 19)
+
+        UICorner_17.CornerRadius = UDim.new(31231, 31232131)
+        UICorner_17.Parent = TheToggle
+
+        Shit.Name = "Shit"
+        Shit.Parent = TheToggle
+        Shit.AnchorPoint = Vector2.new(0.5, 0.5)
+        Shit.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        Shit.Position = UDim2.new(0, 9, 0, 10)
+        Shit.Size = UDim2.new(0, 15, 0, 15)
+        
+
+        UICorner_18.CornerRadius = UDim.new(31231, 31232131)
+        UICorner_18.Parent = Shit
+
+        Ass.Name = "Ass"
+        Ass.Parent = Shit
+        Ass.AnchorPoint = Vector2.new(0.5, 0.5)
+        Ass.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        Ass.Position = UDim2.new(0, 8, 0, 7)
+        Ass.Size = UDim2.new(0, 0, 0, 0)
+
+        UICorner_19.CornerRadius = UDim.new(31231, 31232131)
+        UICorner_19.Parent = Ass
+
+
+
+        Toggle.InputBegan:connect(function(a)
+            if a.UserInputType == Enum.UserInputType.MouseButton1 then
+                t = not t
+                if t then Ass:TweenSize(UDim2.new(0,7,0,7), "Out", "Linear", 0.1, true) end
+                if not t then Ass:TweenSize(UDim2.new(0,0,0,0), "Out", "Linear", 0.1, true) end
+                callback()
+            end
+        end)
+
+        Toggle.MouseEnter:connect(function()
+            ToggleBorder.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        end)
+        Toggle.MouseLeave:connect(function()
+            ToggleBorder.BackgroundColor3 = Color3.fromRGB(255, 115, 0)
+        end)
+    end
+    
+    function creator:Description(name, txt, tab)
+        name = name or "Description"
+        txt = txt or "somethinggggg"
+        tab = Tabs[tab].Tab:WaitForChild("Container") or Tabs:GetChildren()[2].Tab:WaitForChild("Container")
+
+        local Note = Instance.new("Frame")
+        local NoteBorder = Instance.new("Frame")
+        local UICorner_20 = Instance.new("UICorner")
+        local Entry_4 = Instance.new("Frame")
+        local UICorner_21 = Instance.new("UICorner")
+        local NoteDescription = Instance.new("TextLabel")
+        local Arrow = Instance.new("ImageLabel")
+        local Ting = Instance.new("TextLabel")
+
+        Note.Name = "Note"
+        Note.Parent = tab
+        Note.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Note.BackgroundTransparency = 1.000
+        Note.Size = UDim2.new(0, 303, 0, 40)
+
+        NoteBorder.Name = "NoteBorder"
+        NoteBorder.Parent = Note
+        NoteBorder.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        NoteBorder.Size = UDim2.new(0, 303, 0, 40)
+
+        UICorner_20.CornerRadius = UDim.new(0, 4)
+        UICorner_20.Parent = NoteBorder
+
+        Entry_4.Name = "Entry"
+        Entry_4.Parent = NoteBorder
+        Entry_4.AnchorPoint = Vector2.new(0.5, 0.5)
+        Entry_4.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        Entry_4.Position = UDim2.new(0, 151, 0, 20)
+        Entry_4.Size = UDim2.new(0, 301, 0, 38)
+
+        UICorner_21.CornerRadius = UDim.new(0, 4)
+        UICorner_21.Parent = Entry_4
+
+        NoteDescription.Name = "NoteDescription"
+        NoteDescription.Parent = Entry_4
+        NoteDescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NoteDescription.BackgroundTransparency = 1.000
+        NoteDescription.Position = UDim2.new(0.0199335553, 0, 0.625, 0)
+        NoteDescription.Size = UDim2.new(0, 290, 0, 11)
+        NoteDescription.Font = Enum.Font.GothamSemibold
+        NoteDescription.Text = txt
+        NoteDescription.TextColor3 = Color3.fromRGB(102, 102, 102)
+        NoteDescription.TextSize = 11.000
+        NoteDescription.TextWrapped = true
+        NoteDescription.TextXAlignment = Enum.TextXAlignment.Left
+
+        Arrow.Name = "Arrow"
+        Arrow.Parent = Entry_4
+        Arrow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Arrow.BackgroundTransparency = 1.000
+        Arrow.Size = UDim2.new(0, 19, 0, 19)
+        Arrow.Image = "rbxassetid://5836683210"
+        Arrow.ImageColor3 = Color3.fromRGB(143, 143, 143)
+
+        Ting.Name = "Ting"
+        Ting.Parent = Entry_4
+        Ting.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Ting.BackgroundTransparency = 1.000
+        Ting.Position = UDim2.new(0.0664451793, 0, 0.0986842141, 0)
+        Ting.Size = UDim2.new(0, 91, 0, 14)
+        Ting.Font = Enum.Font.GothamSemibold
+        Ting.Text = name
+        Ting.TextColor3 = Color3.fromRGB(143, 143, 143)
+        Ting.TextSize = 13.000
+        Ting.TextWrapped = true
+        Ting.TextXAlignment = Enum.TextXAlignment.Left
+    end
+    return creator
+end
+
+return library
