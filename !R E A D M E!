@@ -1,0 +1,40 @@
+Alright so, You're probably wondering to yourself why I have so many UIs. 
+So, I personally use to struggle in making UIs (I still sort of do but I can make a decent UI) 
+
+You're also probably wondering how I get all of these. About 95% of these are ones I've manually found but recently I've made a bot that can get these for me! Pretty cool right? 
+The way this works is I have custom settings do detect parts that only UI Library's use (Functions displayed below) 
+1. game:GetService("RunService")
+2. game:GetService("TweenService")
+3. player:GetMouse()
+4. 'function Library:Main'
+5. 'return Library'
+--------------------------------------
+Alright so now that's done I can explain more into what the hell these are. You can skip this if you already know what a UI Lib/Library is. 
+A UI Library is something that's used to make GUI's easier and quicker. Instead of having to add a button in roblox studio you can just do (ex. Addbutton:(Section):Main)
+This will then add a button automatically for you and remove the hastle of making the UI yourself. 
+--------------------------------------
+Now onto the agreements you go by when you use a UI Lib from my pack. 
+By using a Lib from my pack you agree to the following: 
+1. You will credit the owner of the Lib, This meaning in your obfuscated or un-obfuscated code you will have credits to the maker of the lib or the project the lib came from (Ex. UI Lib made by Sowd)
+2. You agree that you will NEVER take credit for ANY of these UIs that are not yours. If I catch you saying you made one that you didn't personally make then I will contact the original owner.
+3. If you are asked where you got the UI you will not say "Oh, LonelyScripter gave it to me, he's so cool and I love how he makes my life easier by giving up his own time for UI's" yeah, None of that bullshit. You give the original owners name to the UI Lib and say they provided it publically. If the person asking where it came from ask's where you got it from you can send them the Lib. 
+4. If you are found in a situation where the original UI creator dissagrees with you using the Lib, I encourage you to give them my contact info to avoid a confrontation between you and them. 
+--------------------------------------
+Section for the makers of these Uis
+
+Alright so, You're either: 
+A. Hey this guys pretty cool
+B. I really don't care
+or
+C. Why did this guy take my UI and why is it in a extremely disorganized GitHub Repo? 
+
+In which, here's my responses: 
+For you guys in 'A' I would like to say you guys are cool and I appreciate your contribution to the community. Love you type of guys <3 
+For you guys in 'B' You remind me of Elite users with their "reason for away" set to some stuff like 'eating' 
+For you guys in "C" You can shove your arm so far up your god damn a- I mean you can contact me here https://v3rmillion.net/member.php?action=profile&uid=1833377
+--------------------------------------
+Yeah, Still not done. 
+
+So, I also have a section specifically for you guys making UIs which is in the 'for ui makers' tab in which you can find some prety cool tweening. 
+--------------------------------------
+Now we're done. Have a good day guys and enjoy using these. If any go down or don't work you can DM me the link for it. Peace!
