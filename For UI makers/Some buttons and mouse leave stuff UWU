@@ -1,0 +1,20 @@
+
+Button.MouseButton1Down:Connect(function(X, Y)
+        ButtonData.IsDown = true
+        TweenService:Create(DownColour, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0.75}):Play()
+    end)
+    ---------^Down
+    ---------vUp
+    Button.MouseButton1Up:Connect(function(X, Y)
+        if ButtonData.IsDown then
+            ButtonData.IsDown = not ButtonData.IsDown
+            TweenService:Create(DownColour, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1}):Play()
+            ButtonData.Ripple(X, Y)
+        end
+    end)
+    --------v Mouse leave
+    Button.MouseLeave:Connect(function(X, Y)
+        ButtonData.IsDown = false
+        TweenService:Create(DownColour, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1}):Play()
+    end)
+end
