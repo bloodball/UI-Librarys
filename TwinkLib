@@ -1,6 +1,6 @@
 --Made by : https://v3rmillion.net/member.php?action=profile&uid=1078854
 
-local UILibrary = loadstring(game:HttpGet("https://pastebin.com/raw/V1ca2q9s"))()
+local UILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/twink"))()
 
 local MainUI = UILibrary.Load("ChibuHub")
 local FirstPage = MainUI.AddPage("Home")
