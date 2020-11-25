@@ -1,7 +1,7 @@
 --One of doge's first UI Libs. Don't judge it. Go show him support by using his scripts 
 --https://github.com/DogePlayz-Dev/DogeScripts
 
-local module = {}
+local dog = {}
 
 -- Instances:
 
@@ -54,7 +54,7 @@ UIListLayout.Padding = UDim.new(0.0500000007, 0)
 
 --Adding Functions
 
-function module:NewBox(Name, func)
+function dog:NewBox(Name, func)
 
     local BoxName = Instance.new("TextBox")
     UICorner.Parent = BoxName
@@ -77,7 +77,7 @@ function module:NewBox(Name, func)
 
 end
 
-function module:NewButton(Name, func)
+function dog:NewButton(Name, func)
     local ButtonName = Instance.new("TextButton")
     UICorner_2.Parent = ButtonName
     
@@ -98,7 +98,7 @@ function module:NewButton(Name, func)
 
 end
 
-function module:NewText(Text)
+function dog:NewText(Text)
     TextName.Name = Text
     TextName.Parent = Main2
     TextName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
