@@ -1,4 +1,4 @@
---(Forked) By this sexy man https://github.com/dawid-scripts
+--(Forked) from this sexy man https://github.com/dawid-scripts
 
 local TweenService = game:GetService("TweenService")
 local function ripple(obj)
