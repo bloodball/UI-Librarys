@@ -1,7 +1,7 @@
 --No example for this one, It's worth it though if you take the time to use this!
 --https://v3rmillion.net/member.php?action=profile&uid=456772
 
-local Lib = loadstring(game:HttpGet("http://airbab.kro.kr/files/UI_Library.lua"))()
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/modern"))()
 --[[
 Functions:
 Lib:Tab(name)
