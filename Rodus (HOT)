@@ -1,6 +1,6 @@
 --A very sexy lib made by https://v3rmillion.net/member.php?action=profile&uid=1379221 , Here's the release thread https://v3rmillion.net/showthread.php?tid=1066917
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/stitchTheElite/Rodus-V1.0/main/lib.lua", true))() -- put this first above everything (important!)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/rodus", true))() -- put this first above everything (important!)
 
 CreateMain(title<string/number>) -- create main
 CreateMain("Rodus") -- example main
