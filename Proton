@@ -1,0 +1,27 @@
+local proton =  loadstring(game:HttpGet('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/prot', true))() --require the module
+
+local gui = proton.draw("ScreenGui",{
+	Name = "MyGui";
+	Parent = game.Players.LocalPlayer.PlayerGui      --create a screengui and parent it to playergui
+});                
+
+local button = proton.draw("TextButton", {
+	Name = "MyButton";
+	Size = UDim2.new(1,0,1,0);            --create a text button and parent it to the gui we created earlier
+	Position = UDim2.new(0.5,0,0.5,0);             
+	BackgroundColor3 = modules.presets.color.Gold; --or a color3 value
+        Text = "Click Me";
+	Parent = gui;
+})
+
+--example of events
+
+local connection1 = proton.connect(button,"Activated",function()
+	print("Clicked!")            --runs when the button is clicked
+	button:Destroy()
+end)
+
+local connection2 = proton.connect(button,"Destroyed",function()
+	print("Deleted!")           --runs when the button is destroyed
+end)
+
