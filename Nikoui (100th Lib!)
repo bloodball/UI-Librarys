@@ -1,0 +1,15 @@
+
+local library = loadstring(game:HttpGet"https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/niko")()
+local window = library:MakeWindow('Main')
+
+local Toggled = window:addCheckbox('toggle')
+local mult = window:addTextBoxF('1', function(text)
+---
+end)
+
+
+local Filter = window:addDropdown({mfilter,pfilter,bfilter})
+---
+end
+
+end
