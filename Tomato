@@ -1,0 +1,60 @@
+--https://v3rmillion.net/member.php?action=profile&uid=168983
+local guiLibrary = game:service'RunService':IsStudio() and require(script:WaitForChild'TabUI') or loadstring(game:HttpGet"https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/tomato")()
+local uis = game:service'UserInputService'
+local themeColors = {
+	Red=Color3.fromRGB(209,58,58);
+	Green=Color3.fromRGB(58,209,58);
+	Blue=Color3.fromRGB(58,58,209);
+	Purple=Color3.fromRGB(130,60,209);
+}
+
+local cachedSpeed=0;
+
+local localPlr		=game:service'Players'.localPlayer;
+local ui 			=guiLibrary.new({ToggleKey=Enum.KeyCode.RightShift})
+
+local player 		=ui:AddTab("Player")
+local render 		=ui:AddTab("Render")
+local esp			=render:AddTab("ESP")
+local movement		=player:AddTab("Movement")
+local themes		=ui:AddDropdown("Themes",{Values={"Red","Blue","Green","Purple","Gay"}})
+local panic			=ui:AddButton("Panic")
+
+local espToggle 	=esp:AddToggle("Enabled",{Value=true})
+local espTypes 		=esp:AddDropdown("ESP Type",{Values={"3D","2D"}})
+
+local wsToggle 		=movement:AddToggle("Walkspeed",{Value=false})
+local wsSpeed		=movement:AddSlider({Step=.5;Value=16;MinValue=0;MaxValue=64;})
+
+wsSpeed.ValueChanged:connect(function(newValue)
+	if(wsToggle.Value)then
+		localPlr.Character:FindFirstChildOfClass'Humanoid'.WalkSpeed=newValue
+	end	
+end)
+
+wsToggle.Used:connect(function(state)
+	if(state)then
+		cachedSpeed=localPlr.Character:FindFirstChildOfClass'Humanoid'.WalkSpeed;
+		localPlr.Character:FindFirstChildOfClass'Humanoid'.WalkSpeed=wsSpeed.Value
+	else
+		localPlr.Character:FindFirstChildOfClass'Humanoid'.WalkSpeed=cachedSpeed
+	end
+end)
+
+themes.ValueChanged:connect(function(newValue,oldValue)
+	if(newValue~='Gay' and themeColors[newValue])then
+		ui:SetColor(themeColors[newValue])
+	end
+end)
+
+panic.Used:connect(function()
+	wsToggle:Disable()
+	espToggle:Disable()
+	ui:SetVisibility(false)
+end)
+
+game:service'RunService'.Stepped:connect(function()
+	if(themes.Value=='Gay')then
+		ui:SetColor(Color3.fromHSV(((tick()*25)%360)/360,1,1))
+	end
+end)
