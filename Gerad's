@@ -1,0 +1,43 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/gera"))()
+
+local Window = library:CreateWindow("I am a epic window")
+local Section = Window:Section("Am section")
+
+local Tableeeeeeee = {"a", "b", "c", "d", "e", "f", "g", "h", "Wally", "Wally Is Cool", "bit", "byte", "megabyte"}
+
+Section:Button(
+    "Button",
+    function()
+        print("ToggleFlag -", library.flags.EpicFlag)
+        print("BoxFlag -", library.flags.BoxFlag)
+        print("KeYbInD -", library.flags.KeYbInD)
+        print("sliderino -", library.flags.Slideeeeee)
+        print("Dropperino -", library.flags.Dropperino)
+        print(
+            "ColorPicker -",
+            "Color3.new(",
+            library.flags.AMCOLOUR.Colour,
+            ") Opacity =",
+            library.flags.AMCOLOUR.Opacity
+        )
+        print("------------------------------------------------")
+        for i, v in pairs(library.flags.Dropperino) do
+            warn(i, v)
+        end
+        print("------------------------------------------------")
+    end
+)
+
+Section:Toggle("Am toggle", {flag = "EpicFlag", Default = true})
+Section:Box("Am box", {flag = "BoxFlag"})
+Section:Label("A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.")
+Section:Bind(
+    "am KEYbind",
+    {flag = "KeYbInD"},
+    function()
+        print("AAAAAA")
+    end
+)
+Section:Slider("am sliderino", {flag = "Slideeeeee", Min = -100, Max = 100, Default = 0, Precise = false})
+Section:Dropdown("ima drop", {flag = "Dropperino", list = Tableeeeeeee, Type = "Toggle"})
+Section:ColorPicker("colour not color >:D", {flag = "AMCOLOUR"})
