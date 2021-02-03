@@ -228,8 +228,6 @@ test:CreateSlider("Slider", 50,0,0,0 , function()
 ----------------------------------------------------------------------------------------------------
 Coollib V2.
 ```lua
---Made by : https://v3rmillion.net/member.php?action=profile&uid=712121
-
 --[[
 Theme = {
 ["MainColor"] = Color3.fromRGB(20, 20, 20);
@@ -295,4 +293,4 @@ end)
 window:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
 window:String({string = "String"})
 ```
-##This is unfinished! I will put the remainder of them on here in due time.
+## This is unfinished! I will put the remainder of them on here in due time.
