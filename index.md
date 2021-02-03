@@ -1,7 +1,7 @@
 ## Welcome to Graveyard's UI Archive. 
 
 Modern UI.
-```markdown
+```lua
 local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/modern"))()
 local ExampleTab = Lib:Tab("ExampleTab")
 ExampleTab:Button("Hello World!", function()
