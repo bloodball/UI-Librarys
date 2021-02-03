@@ -35,7 +35,7 @@ end)
 ```
 ----------------------------------------------------------------------------------------------------
 Coasting UI.
-```markdown
+```lua
 local CoastingLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/3gQQtaKX"))()
 
 local AimbotTab = CoastingLibrary:CreateTab("Aimbot")
@@ -70,7 +70,7 @@ end)
 ```
 ----------------------------------------------------------------------------------------------------
 0x37's UI Library.
-```markdown
+```lua
 local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/0x"))()
 
 local w1 = library:Window("a") -- Text
@@ -127,7 +127,7 @@ w1:Label("0 x 3 7") -- Text
 ```
 ----------------------------------------------------------------------------------------------------
 Arilis & Aztup's UI (Old).
-```markdown
+```lua
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Create%20Arilis%20%26%20Aztup's%20UI%20(Old)', true))()
 local main = library:CreateWindow('Main')
 local resetChar = main:Button('Reset Character', function()
@@ -166,7 +166,7 @@ end)
 ```
 ----------------------------------------------------------------------------------------------------
 Bacon Lib.
-```markdown
+```lua
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/bacon"))()
 local version, changelog = lib:GetInfo()
 local window = lib:CreateWindow("BaconLib v"..version)
@@ -207,190 +207,92 @@ local keybind = lib:CreateKeyBind(window, "Print Key", "z", function(key)
 end)
 ```
 ----------------------------------------------------------------------------------------------------
+Coasting Old.
+```lua
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/coast%20old"))()
+local test = Library:CreateTab("Title", "Description")
 
-```markdown
+test:CreateButton("Button", function()
+end)
 
-```
-----------------------------------------------------------------------------------------------------
+test:CreateSection("Section")
 
-```markdown
+test:CreateCheckbox("Checkbox", function()
+end)
 
-```
-----------------------------------------------------------------------------------------------------
+test:CreateSlider("Slider", 50,0,0,0 , function()
+    end)
 
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
 
 ```
 ----------------------------------------------------------------------------------------------------
+Coollib V2.
+```lua
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=712121
 
-```markdown
-
+--[[
+Theme = {
+["MainColor"] = Color3.fromRGB(20, 20, 20);
+["BackColor"] = Color3.fromRGB(10, 10, 10);
+["AccentRGB"] = Color3.fromRGB(64, 51, 145);
+["ToggleRGB"] = Color3.fromRGB(64, 51, 145);
+}
+]]--
+local library = loadstring(game:HttpGet("https://wally-hub.eats-shit.xyz/images/ql0tevzglj94.txt"))()
+local tab1 = library.newTab("Local")
+local tab3 = library.newTab("ESP")
+local tab2 = library.newTab("Settings")
+kys = function()
+game:GetService("Players").LocalPlayer.Character:BreakJoints()
+end
+tab1.addbtn("die", kys)
+tab1.addtoggle("WS Enabled", "wsenb", function(enb) end)
+tab1.addbox("WS Value", "wsvalue", 16, function(value) end)
+game:GetService("RunService").RenderStepped:Connect(function()
+if library.flags["wsenb"] == false then
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+else
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = library.flags["wsvalue"]
+end
+end)
+tab2.addbtn("Destroy GUI", function() for i,v in pairs(game.CoreGui:GetChildren()) do if v.Name == "UiLib" then v:Destroy() end end end)
+tab2.addbox("Title", "titleflag", "Title Here", function(lol) end)
+tab2.addbox("Duration", "durflag", 1, function(ggg) end)
+tab2.addbox("Description", "descflag", "Description", function(ll) end)
+tab2.addbtn("Send Notification", function()
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = library.flags["titleflag"],
+Duration = tostring(library.flags["durflag"]),
+Text = library.flags["descflag"]
+})
+end)
 ```
 ----------------------------------------------------------------------------------------------------
-
-```markdown
-
+Dirt
+```lua
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/dirt",true))()
+local Table = {}
+local window = Lib:CreateWindow("Nice")
+window:Section("Section")
+window:Button("Button",function()
+   print("Nice")
+end)
+window:Toggle("Toggle",{location = Table, flag = "Toggle"},function()
+   print(Table["Toggle"])
+end)
+window:Slider("Slider",{location = Table, min = 1, max = 64, default = 32, precise = true --[[ 0.00 instead of 0 ]], flag = "Slider"},function()
+   print(Table["Slider"])
+end)
+window:Dropdown("Dropdown",{location = Table,flag = "Dropdown",search = true --[[AddsSearchBar]], list = {"1","2","3","4","5","6","7","8","9","0"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()
+   print(Table["Dropdown"])
+end)
+window:Bind("KeyBind",{location = Table, flag = "KeyBind", default = Enum.KeyCode.B},function() -- Automatically stops when the gui is removed
+   print(Table["KeyBind"])
+end)
+window:Box("Box",{location = Table,flag = "Box", type = "number" --[[ Only Numbers automatically on false ]], hold = "Numbers" --[[ PlaceHolderText ]]},function()
+   print(Table["Box"])
+end)
+window:Search(Color3.fromRGB(255,0,255) --[[nil = Yellow]]) -- Ez searcher for if you have a lot of things
+window:String({string = "String"})
 ```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-```markdown
-
-```
-----------------------------------------------------------------------------------------------------
-
-
+##This is unfinished! I will put the remainder of them on here in due time.
