@@ -1,0 +1,16 @@
+local UI = loadstring(game:HttpGetAsync("https://projectevo.xyz/script/utils/libraryv3.lua"))()
+local Library = UI.library
+local Main = Library:new("Main")
+local Tab = Library:AddTab("Name", "Description", 0) -- Put a image link where the 0 is if you want a icon.
+Tab:AddToggle(
+    "Toggle",
+    function(state)
+        print(state)
+    end
+)
+Tab:AddButton(
+    "Button",
+    function(a)
+        print("Button Pushed!")
+    end
+)
