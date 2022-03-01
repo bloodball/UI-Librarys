@@ -1,8 +1,9 @@
 local UI = loadstring(game:HttpGetAsync("https://projectevo.xyz/script/utils/libraryv3.lua"))()
 local Library = UI.library
-local Main = Library:new("Main")
-local Tab = Library:AddTab("Name", "Description", 0) -- Put a image link where the 0 is if you want a icon.
-Library:AddProfile()
+local Main = Library.new("Main")
+
+local Tab = Main:AddTab("Name", "Description", 0) -- Put a image link where the 0 is if you want a icon.
+Main:AddProfile()
 local Status = false
 local BoxText = ""
 local Value = 0
