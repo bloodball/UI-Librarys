@@ -1,90 +1,295 @@
 local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol"))()
 
 --[[SolarisLib:New({
-  Name - Title of the UI <string>
+  Name - proton v11 <string>
   FolderToSave - Name of the folder where the UI files will be stored <string>
 })]]
-local win = SolarisLib:New({
-  Name = "SolarisLib",
-  FolderToSave = "SolarisLibStuff"
+--//tab
+local Tab1 = Window.NewTab("PROTON HUB")
+
+--//section
+local Section1 = Tab1.NewSection("HOME 🏡")
+
+--// Button
+local Button1 = Section1.NewButton("main hub", function()
+    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Devkigz/LUASCRIPTSALTYOUTUBE/main/New%20UI%20update"))()
+end)
+
+--//Toggles
+local EnabledToggle1 = Section1.NewToggle("Enabled Toggle", function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Devkigz/v5/main/v5hub", true))()
+end, true) -- "true" is the default value of toggle
+
+local DisabledToggle1 = Section1.NewToggle("Disabled Toggle", function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Devkigz/v5/main/v5hub", true))()
+end, false) -- "false" is the default value of toggle
+
+local SliderPrecise1 = Section1.NewSlider("Slider precise", 0, 100, true, function(value)
+    -- Do something with the value
+end, 25)
+
+local SliderNotPrecise1 = Section1.NewSlider("Slider not precise", 0, 100, false, function(value)
+    -- Do something with the value
+end, 75)
+
+--//tab
+local Tab2 = Window.NewTab("BLADE BALL THING")
+
+--//section
+local Section2 = Tab2.NewSection("BDOL HUB?!?")
+
+--// Button
+local Button2 = Section2.NewButton("BDOL HUB", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/-beta-/main/AutoParry.lua"))()
+end)
+
+--//Toggles
+local EnabledToggle2 = Section2.NewToggle("Enabled Toggle", function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/-beta-/main/AutoParry.lua"))()
+end, true) -- "true" is the default value of toggle
+
+local DisabledToggle2 = Section2.NewToggle("Disabled Toggle", function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/-beta-/main/AutoParry.lua"))()
+end, false) -- "false" is the default value of toggle
+
+--//tab
+local Tab3 = Window.NewTab("BROOKHAVEN")
+
+--//section
+local Section3 = Tab3.NewSection("BROOKHAVEN THINGS")
+
+--// Button
+local Button3 = Section3.NewButton("DEEZNUT HUB", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Devkigz/v5/main/v5hub", true))()
+end)
+
+--// Button
+local Button3 = Section3.NewButton("icehub HUB", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven", true))()
+end)
+
+--//Toggles
+local EnabledToggle3 = Section3.NewToggle("TRY?!?!", function(bool)
+    Rayfield:Notify({
+	Title = "e",
+	Content = "Notification Content",
+	Duration = 6.5,
+	Image = 4483362458,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "e!",
+			Callback = function()
+				print("e")
+			end
+		},
+	},
 })
+end, true) -- "true" is the default value of toggle
 
---win:Tab(title <string>)
-local tab = win:Tab("Tab 1")
+local DisabledToggle3 = Section3.NewToggle("Disabled Toggle", function(bool)
+    -- code here
+end, false) -- "false" is the default value of toggle
 
---tab:Section(title <string>)
-local sec = tab:Section("Elements")
+--//tab
+local Tab4 = Window.NewTab("PRISON LIFE TROLL 😆")
 
---sec:Button(title <string>, callback <function>)
-sec:Button("Button", function()
-  SolarisLib:Notification("Test", "This is a notification test.")
+--//section
+local Section4 = Tab4.NewSection("CAN GET KICK∆")
+
+--// Button
+local Button4 = Section4.NewButton("pristine prison life", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/d5BS5qiX"))()
 end)
 
---sec:Toggle(title <string>,default <boolean>, flag <string>, callback <function>)
-local toggle = sec:Toggle("Toggle", false,"Toggle", function(t)
-  print(t)
+--//Toggles
+local EnabledToggle4 = Section4.NewToggle("Enabled Toggle", function(bool)
+    -- code here
+end, true) -- "true" is the default value of toggle
+
+local DisabledToggle4 = Section4.NewToggle("Disabled Toggle", function(bool)
+    -- code here
+end, false) -- "false" is the default value of toggle
+
+--//tab
+local Tab = Window.NewTab("CREDIT")
+
+--//section
+local Section = Tab.NewSection("CREDITS TO @luascripts")
+
+--//tab
+local Tab = Window.NewTab("OTHERS OP SCRIPT")
+
+--//section
+local Section = Tab.NewSection("OP HUBS , GUI_S")
+
+--// Button
+local Button = Section.NewButton("Aim bot",function()
+local Camera = workspace.CurrentCamera
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+local Holding = false
+
+_G.AimbotEnabled = true
+_G.TeamCheck = false -- If set to true then the script would only lock your aim at enemy team members.
+_G.AimPart = "Head" -- Where the aimbot script would lock at.
+_G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officially lock onto the target's aimpart.
+
+_G.CircleSides = 64 -- How many sides the FOV circle would have.
+_G.CircleColor = Color3.fromRGB(255, 255, 255) -- (RGB) Color that the FOV circle would appear as.
+_G.CircleTransparency = 0.7 -- Transparency of the circle.
+_G.CircleRadius = 80 -- The radius of the circle / FOV.
+_G.CircleFilled = false -- Determines whether or not the circle is filled.
+_G.CircleVisible = true -- Determines whether or not the circle is visible.
+_G.CircleThickness = 0 -- The thickness of the circle.
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+
+local function GetClosestPlayer()
+	local MaximumDistance = _G.CircleRadius
+	local Target = nil
+
+	for _, v in next, Players:GetPlayers() do
+		if v.Name ~= LocalPlayer.Name then
+			if _G.TeamCheck == true then
+				if v.Team ~= LocalPlayer.Team then
+					if v.Character ~= nil then
+						if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+							if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+								local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+								local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+								
+								if VectorDistance < MaximumDistance then
+									Target = v
+								end
+							end
+						end
+					end
+				end
+			else
+				if v.Character ~= nil then
+					if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+						if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+							local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+							local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+							
+							if VectorDistance < MaximumDistance then
+								Target = v
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	return Target
+end
+
+UserInputService.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = true
+    end
 end)
 
---[[
-toggle:Set(state <boolean>)
-]]
-
---sec:Slider(title <string>,default <number>,max <number>,minimum <number>,increment <number>, flag <string>, callback <function>)
-local slider = sec:Slider("Slider", 0,25,0,2.5,"Slider", function(t)
-  print(t)
+UserInputService.InputEnded:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = false
+    end
 end)
 
---[[
-slider:Set(state <number>)
-]]
+RunService.RenderStepped:Connect(function()
+    FOVCircle.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Filled = _G.CircleFilled
+    FOVCircle.Color = _G.CircleColor
+    FOVCircle.Visible = _G.CircleVisible
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Transparency = _G.CircleTransparency
+    FOVCircle.NumSides = _G.CircleSides
+    FOVCircle.Thickness = _G.CircleThickness
 
---sec:Dropdown(title <string>,options <table>,default <string>, flag <string>, callback <function>)
-local dropdown = sec:Dropdown("Dropdown", {"a","b","c","d","e"},"","Dropdown", function(t)
-  print(t)
+    if Holding == true and _G.AimbotEnabled == true then
+        TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()
+    end
+end)
 end)
 
---[[
-Dropdown:Refresh(options <table>, deletecurrent <boolean>)
-Dropdown:Set(option <string>)
-]]
+--//tab
+local Tab = Window.NewTab("blox fruis")
 
---sec:MultiDropdown(title <string>,options <table>,default <table>, flag <string>, callback <function>)
-local multidropdown =sec:MultiDropdown("Multi Dropdown", {"a","b","c","d","e"},{"b", "c"},"Dropdown", function(t)
-  print(table.concat(t, ", "))
+--//section
+local Section = Tab.NewSection("blox script")
+
+--// Button
+local Button = Section.NewButton("hoho hub mby",function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
 end)
 
---[[
-Dropdown:Refresh(options <table>, deletecurrent <boolean>)
-Dropdown:Set(option <table>)
-]]
+--//Toggles
+local EnabledToggle = Section.NewToggle("",function(bool)
+-- code here
+end,true) -- "true" is the default value of toggle
 
---sec:Colorpicker(title <string>, default <color3>, flag <string>, callback <function>)
-sec:Colorpicker("Colorpicker", Color3.fromRGB(255,255,255),"Colorpicker", function(t)
-  print(t)
+local DisabledToggle = Section.NewToggle("Disabled Toggle",function(bool)
+-- code here
+end,false) -- "false" is the default value of toggle
+
+--//tab
+local Tab = Window.NewTab("universal hacks")
+
+--//section
+local Section = Tab.NewSection("fly hack")
+
+--// Button
+local Button = Section.NewButton("fly gui v3",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
 end)
 
---sec:Textbox(title <string> ,disappear <boolean>, callback <function>)
-sec:Textbox("Textbox", true, function(t)
-  print(t)
+--//section
+local Section = Tab.NewSection("universal")
+
+--// Button
+local Button = Section.NewButton("keyboard gui",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
 end)
 
---sec:Bind(title <string>, default <keycode>, hold <boolean>, flag <string>, callback <function>)
-sec:Bind("Hold Bind", Enum.KeyCode.E, true, "BindHold", function(t)
-  print(t)
+--//section
+local Section = Tab.NewSection("piano games")
+
+--// Button
+local Button = Section.NewButton("auto piano player",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VBfHKC86WxpXyIgr/iwiwiejsaIwidi/main/iaowjdhd.lua", true))()
 end)
 
-sec:Bind("Normal Bind", Enum.KeyCode.F, false, "BindNormal", function()
-  print("Bind pressed")
+--//tab
+local Tab = Window.NewTab("BACK DOOR")
+
+--//section
+local Section = Tab.NewSection("GOOFY")
+
+--// Button
+local Button = Section.NewButton("BACK DOOR SCRIPT",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v8/src/main.lua"))();
 end)
 
---[[
-bind:Set(state <keycode>)
-]]
+--//tab
+local Tab = Window.NewTab("updates")
 
---sec:Label(text <string>)
-local label = sec:Label("Label")
+--//section
+local Section = Tab.NewSection("updateV10")
 
---[[
-label:Set(text <string>)
-]]
-local tab2 = win:Tab("Tab 2")
+--// Button
+local Button = Section.NewButton("OP UPDATE WITH A NEW BACKDOOR",function()
+end)
